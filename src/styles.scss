@@ -1,20 +1,229 @@
-/* You can add global styles to this file, and also import other style files */
-
+@import url("https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,200;0,300;0,500;0,600;0,700;1,400;1,600&family=Kanit:ital,wght@0,100;0,200;0,400;0,500;0,600;0,800;1,100;1,200;1,400;1,500;1,600;1,800&display=swap");
+// $primary-color: linear-gradient(
+//   0deg,
+//   rgba(9, 34, 148, 1) 0%,
+//   rgba(49, 49, 182, 1) 23%,
+//   rgba(78, 77, 193, 1) 100%
+// );
+$primary-color: #1b282b;
+$color: #e0ce0b;
+$secondary-color: #faf9f6;
 :host {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 14px;
-  color: #333;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: $secondary-color;
+    /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $primary-color;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid white;
+    /* creates padding around scroll thumb */
 }
 
 html,
 body {
-  height: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Georama", sans-serif;
+    background-color: $secondary-color;
 }
+
 body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    padding: 8px;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+header {
+    background: $primary-color;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 56px;
+}
+
+header nav {
+    padding: 8px;
+    height: 44px;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    .logo {
+        font-size: 24px;
+        color: $color;
+        font-weight: 500;
+        padding: 8px;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    margin-top: 56px;
+    background: $secondary-color;
+}
+
+app-home {
+    flex: 1;
+}
+
+.container aside {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+aside .box {
+    display: flex;
+    max-width: 1000px;
+    height: 400px;
+    width: 100%;
+    border: 1px solid rgba(27, 40, 43, 0.35);
+    border-radius: 4px;
+    box-shadow: 2px 4px 8px rgb(0 0 0 / 12%);
+    .box-content {
+        flex: 1;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        section {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            input {
+                width: 54px;
+                margin-left: 4px;
+            }
+        }
+        .main {
+            flex: 1;
+            padding: 4px;
+        }
+        .content-filiais {
+            display: flex;
+            flex-direction: column;
+            flex: 2;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+            .content {
+                display: flex;
+                flex-direction: column;
+                padding-top: 8px;
+                flex: 1;
+                overflow: auto;
+                width: 100%;
+                align-items: center;
+            }
+        }
+    }
+    .box-content input {
+        border: 1px solid $primary-color;
+        outline: none;
+        height: 26px;
+        border-radius: 4px;
+        padding: 4px;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+        width: 100%;
+    }
+    .mat-checkbox-inner-container {
+        border: 1px solid $primary-color;
+        border-radius: 4px;
+    }
+    .generate-cnpj {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.qtd-filiais {
+    width: 100px;
+    height: 36px;
+}
+
+.content-options {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    position: relative;
+    mat-checkbox {
+        width: 200px;
+    }
+    .copy-icon {
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        color: $primary-color;
+    }
+}
+
+.content-action {
+    padding: 4px;
+    button {
+        background-color: $primary-color;
+        color: $color;
+        margin-left: 4px;
+        width: 200px;
+    }
+}
+
+footer {
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    p {
+        color: $primary-color;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+}
+
+.mat-input-element:disabled,
+.mat-form-field-appearance-fill.mat-form-field-disabled .mat-form-field-label {
+    color: $primary-color;
+}
+
+.mat-divider {
+    border-top-color: $primary-color;
 }

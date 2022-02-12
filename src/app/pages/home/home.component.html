@@ -1,3 +1,48 @@
-<p>
-  home works!
-</p>
+<aside>
+    <div class="box">
+        <div class="box-content">
+            <div class="main">
+                <p>Gerar CNPJ</p>
+                <div class="generate-cnpj">
+                    <div class="content-options">
+                        <input type="text" readonly value="10.236.125/0001-56" [(ngModel)]="cnpjMatriz" name="cnpjMatriz" />
+                        <button class="copy-icon" matSuffix mat-icon-button aria-label="Copiar">
+                            <mat-icon>file_copy</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <section>
+                        <div class="content-options">
+                            <mat-checkbox [(ngModel)]="gerarFiliais">Gerar CNPJ Filial</mat-checkbox>
+                            <div class="qtd-filiais">
+                                <span *ngIf="gerarFiliais">
+                                    <input type="number" name="qtdFiliais" [(ngModel)]="qtdFiliais" min="1" max="999" />
+                                    Qtd
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="content-action">
+                    <button mat-button (click)="generateCNPJ()">Gerar CNPJ</button>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="content-filiais">
+                <div class="content">
+                    <div *ngFor="let item of filiaisList" class="content-options"><input type="text" readonly />
+                        <button class="copy-icon" matSuffix mat-icon-button aria-label="Copiar">
+                            <mat-icon>file_copy</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-content">
+            <p>Como Usar?</p>
+            <div>Passo a passo...</div>
+        </div>
+    </div>
+</aside>
