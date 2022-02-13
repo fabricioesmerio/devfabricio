@@ -5,8 +5,8 @@
                 <p>Gerar CNPJ</p>
                 <div class="generate-cnpj">
                     <div class="content-options">
-                        <input type="text" readonly value="10.236.125/0001-56" [(ngModel)]="cnpjMatriz" name="cnpjMatriz" />
-                        <button class="copy-icon" matSuffix mat-icon-button aria-label="Copiar">
+                        <input type="text" readonly value="10.236.125/0001-56" [(ngModel)]="cnpjMatriz" name="cnpjMatriz" mask="CPF_CNPJ" />
+                        <button class="copy-icon" matSuffix mat-icon-button aria-label="Copiar" (click)="copy(cnpjMatriz)">
                             <mat-icon>file_copy</mat-icon>
                         </button>
                     </div>
@@ -31,8 +31,9 @@
             <mat-divider></mat-divider>
             <div class="content-filiais">
                 <div class="content">
-                    <div *ngFor="let item of filiaisList" class="content-options"><input type="text" readonly />
-                        <button class="copy-icon" matSuffix mat-icon-button aria-label="Copiar">
+                    <div *ngFor="let item of filiaisList; let i = index" class="content-options">
+                        <input type="text" readonly mask="CPF_CNPJ" [(ngModel)]="filiaisList[i]" />
+                        <button class="copy-icon" matSuffix mat-icon-button aria-label="Copiar" (click)="copy(filiaisList[i])">
                             <mat-icon>file_copy</mat-icon>
                         </button>
                     </div>

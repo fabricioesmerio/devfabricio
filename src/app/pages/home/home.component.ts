@@ -21,12 +21,17 @@ export class HomeComponent implements OnInit {
     }
 
     generateCNPJ() {
-        // if (this.gerarFiliais) {
-        //     for (let i = 0; i < this.qtdFiliais; i++) {
-        //         this.filiaisList.push(i.toString())
-        //     }
-        // }
-        this.cnpjMatriz = this.geradorCNPJ.gerarCNPJ()
+        if (this.gerarFiliais) {
+            for (let i = 0; i < this.qtdFiliais; i++) {
+                this.filiaisList.push(i.toString())
+            }
+        }
+        this.cnpjMatriz = this.geradorCNPJ.gerarCNPJ(this.gerarFiliais ? this.qtdFiliais : 0).matriz;
+        this.filiaisList = this.geradorCNPJ.gerarCNPJ(this.gerarFiliais ? this.qtdFiliais : 0).filiais || [];
+    }
+
+    copy(item: any) {
+        navigator.clipboard.writeText(item);
     }
 
 }
