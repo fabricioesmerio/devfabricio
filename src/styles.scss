@@ -217,6 +217,12 @@ footer {
         font-weight: 400;
         letter-spacing: 1px;
     }
+    .link-footer {
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        color: $primary-color;
+    }
 }
 
 .mat-input-element:disabled,
