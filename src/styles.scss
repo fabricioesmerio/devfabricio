@@ -205,7 +205,7 @@ aside .box {
 }
 
 footer {
-    height: 64px;
+    height: 96px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -232,4 +232,25 @@ footer {
 
 .mat-divider {
     border-top-color: $primary-color;
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        position: relative;
+    }
+    .box {
+        flex-direction: column-reverse;
+        width: auto !important;
+        height: 100% !important;
+    }
+    .box-content:nth-last-child(1) {
+        display: none !important;
+    }
+    aside .box .box-content .content-filiais .content {
+        max-height: 206px;
+    }
+    .container aside {
+        align-items: inherit;
+        justify-content: inherit;
+    }
 }

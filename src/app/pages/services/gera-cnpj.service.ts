@@ -29,7 +29,7 @@ export class GeraCnpjService {
         let filiais: Array<string> = [];
 
         if (qtdFilial > 0) {
-            for (let i = parseInt(this.baseCNPJ); i < qtdFilial; i++) {
+            for (let i = parseInt(this.baseCNPJ); i <= qtdFilial; i++) {
                 let _base = this.geraBaseCNPJFilial(i + 1);
                 let _d1 = this.getDigitoVerificador1(_base, raizCNPJ)
                 let _d2 = this.getDigitoVerificador2(_base, raizCNPJ, _d1);
