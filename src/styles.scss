@@ -90,7 +90,7 @@ header nav {
     flex-direction: column;
     flex: 1;
     height: 100%;
-    margin-top: 56px;
+    margin-top: 60px;
     background: $secondary-color;
 }
 
@@ -109,8 +109,8 @@ app-home {
 
 aside .box {
     display: flex;
-    max-width: 1000px;
-    height: 400px;
+    max-width: 1200px;
+    height: calc(100vh - 162px);
     width: 100%;
     border: 1px solid rgba(27, 40, 43, 0.35);
     border-radius: 4px;

@@ -21,6 +21,16 @@ export class HomeComponent implements OnInit {
     }
 
     generateCNPJ() {
+
+
+        console.log('::: --> ', this.qtdFiliais, '\n BOOL', this.gerarFiliais) 
+        console.log('::: MATRIZ :: --> ', this.cnpjMatriz) 
+        if (this.cnpjMatriz && this.gerarFiliais === true) {
+
+        }
+// debugger
+
+
         if (this.gerarFiliais) {
             if (this.qtdFiliais > 999) {
                 return;
@@ -29,8 +39,8 @@ export class HomeComponent implements OnInit {
                 this.filiaisList.push(i.toString())
             }
         }
-        let result = this.geradorCNPJ.gerarCNPJ(this.gerarFiliais ? this.qtdFiliais : 0);
-        this.cnpjMatriz = result.matriz;
+        let result = this.geradorCNPJ.gerarCNPJ(this.gerarFiliais ? this.qtdFiliais : 0, this.cnpjMatriz);
+        this.cnpjMatriz = this.cnpjMatriz || result.matriz;
         this.filiaisList = result.filiais || [];
     }
 

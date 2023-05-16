@@ -16,6 +16,7 @@ import { FooterModule } from './pages/footer/footer.module';
         AppRoutingModule,
         NavbarModule,
         FooterModule,
+        // MatTabsModule
         BrowserAnimationsModule
     ],
     providers: [],

@@ -9,24 +9,29 @@ export class GeraCnpjService {
 
     constructor() { }
 
-    gerarCNPJ(qtdFilial: number): {
+    gerarCNPJ(qtdFilial: number, cnpjMatriz: string = ''): {
         matriz: string,
         filiais?: Array<string>
     } {
-        let total_array = 8;
-        let n = 9;
-        let [n1, n2, n3, n4, n5, n6, n7, n8] = Utils.create_array(total_array, n);
-
-        let base = this.baseCNPJ;
-        let raizCNPJ = n1.toString() + n2.toString() + n3.toString() + n4.toString() + n5.toString() + n6.toString() + n7.toString() + n8.toString()
-
-        let d1 = this.getDigitoVerificador1(base, raizCNPJ.toString());
-
-        let d2 = this.getDigitoVerificador2(base, raizCNPJ, d1)
-
-        let cnpj = `${n1}${n2}${n3}${n4}${n5}${n6}${n7}${n8}${base}${d1}${d2}`;
-
+        let cnpj;
         let filiais: Array<string> = [];
+        let raizCNPJ;
+        let base;
+
+
+        if (cnpjMatriz !== '') {
+
+            cnpj = cnpjMatriz;
+            raizCNPJ = cnpjMatriz.substring(8, 0);
+            base = cnpjMatriz.substring(8, 12);
+
+        } else {
+
+            base = this.baseCNPJ;
+            let dados = this.gerarCnpjMatriz(base);
+            cnpj = dados.cnpj;
+            raizCNPJ = dados.raizCnpj;
+        }
 
         if (qtdFilial > 0) {
             for (let i = parseInt(this.baseCNPJ); i <= qtdFilial; i++) {
@@ -36,10 +41,24 @@ export class GeraCnpjService {
                 filiais.push(`${raizCNPJ}${_base}${_d1}${_d2}`)
             }
         }
-
-
         return { matriz: cnpj, filiais };
 
+    }
+
+    private gerarCnpjMatriz(base: string): {
+        cnpj: string, raizCnpj: string
+    } {
+        let total_array = 8;
+        let n = 9;
+        let [n1, n2, n3, n4, n5, n6, n7, n8] = Utils.create_array(total_array, n);
+        let raizCnpj = n1.toString() + n2.toString() + n3.toString() + n4.toString() + n5.toString() + n6.toString() + n7.toString() + n8.toString()
+
+        let d1 = this.getDigitoVerificador1(base, raizCnpj.toString());
+
+        let d2 = this.getDigitoVerificador2(base, raizCnpj, d1)
+
+        let cnpj = `${n1}${n2}${n3}${n4}${n5}${n6}${n7}${n8}${base}${d1}${d2}`;
+        return { cnpj, raizCnpj };
     }
 
     private geraBaseCNPJFilial(args: number) {
