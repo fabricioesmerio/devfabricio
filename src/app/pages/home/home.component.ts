@@ -1,5 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
 import { GeraCnpjService } from '../services/gera-cnpj.service';
+import { AlertService } from 'src/app/shared/alert.service';
+import { ValidadorCnpjService } from 'src/app/shared/validador-cnpj.service';
 
 @Component({
     selector: 'app-home',
@@ -14,22 +17,28 @@ export class HomeComponent implements OnInit {
     filiaisList: Array<string> = [];
 
     constructor(
-        private geradorCNPJ: GeraCnpjService
+        private geradorCNPJ: GeraCnpjService,
+        private alertService: AlertService,
+        private validatorCnpj: ValidadorCnpjService
     ) { }
 
     ngOnInit() {
     }
 
+    clearAndGenerateCNPJ() {
+        this.cnpjMatriz = '';
+        this.generateCNPJ();
+    }
+
     generateCNPJ() {
 
-
-        console.log('::: --> ', this.qtdFiliais, '\n BOOL', this.gerarFiliais) 
-        console.log('::: MATRIZ :: --> ', this.cnpjMatriz) 
-        if (this.cnpjMatriz && this.gerarFiliais === true) {
-
+        if (this.cnpjMatriz) {
+            if (this.validatorCnpj.testaCNPJ(this.cnpjMatriz) === false) {
+                this.alertService.resolve('error', 'O CNPJ informado é inválido.');
+                this.filiaisList = [];
+                return;
+            }
         }
-// debugger
-
 
         if (this.gerarFiliais) {
             if (this.qtdFiliais > 999) {

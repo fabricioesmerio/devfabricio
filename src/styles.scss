@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,200;0,300;0,500;0,600;0,700;1,400;1,600&family=Kanit:ital,wght@0,100;0,200;0,400;0,500;0,600;0,800;1,100;1,200;1,400;1,500;1,600;1,800&display=swap");
+@import 'ngx-toastr/toastr';
+
+
 // $primary-color: linear-gradient(
 //   0deg,
 //   rgba(9, 34, 148, 1) 0%,
@@ -8,6 +11,8 @@
 $primary-color: #1b282b;
 $color: #e0ce0b;
 $secondary-color: #faf9f6;
+$background-color: rgb(250 250 250/1);
+
 :host {
     font-size: 14px;
     color: #333;
@@ -40,7 +45,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: "Georama", sans-serif;
-    background-color: $secondary-color;
+    background-color: $background-color;
 }
 
 body {
@@ -73,11 +78,13 @@ header nav {
     display: flex;
     flex: 1;
     align-items: center;
+
     .logo {
         font-size: 24px;
         color: $color;
         font-weight: 500;
         padding: 8px;
+
         img {
             width: 48px;
             height: auto;
@@ -91,7 +98,7 @@ header nav {
     flex: 1;
     height: 100%;
     margin-top: 60px;
-    background: $secondary-color;
+    padding: 16px;
 }
 
 app-home {
@@ -100,47 +107,59 @@ app-home {
 
 .container aside {
     display: flex;
-    flex-direction: column;
     flex: 1;
     height: 100%;
     align-items: center;
     justify-content: center;
+    background: white;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
 }
 
 aside .box {
     display: flex;
-    max-width: 1200px;
-    height: calc(100vh - 162px);
+    flex-direction: column;
+    flex: 1;
     width: 100%;
-    border: 1px solid rgba(27, 40, 43, 0.35);
-    border-radius: 4px;
-    box-shadow: 2px 4px 8px rgb(0 0 0 / 12%);
+
+    // border: 1px solid rgba(27, 40, 43, 0.35);
+    // border-radius: 4px;
+    // box-shadow: 2px 4px 8px rgb(0 0 0 / 12%);
     .box-content {
         flex: 1;
         text-align: center;
         display: flex;
         flex-direction: column;
+        padding: 8px;
+
         section {
             display: flex;
             flex: 1;
             align-items: center;
             justify-content: center;
+
             input {
                 width: 54px;
                 margin-left: 4px;
             }
         }
+
         .main {
             flex: 1;
             padding: 4px;
         }
+
         .content-filiais {
             display: flex;
             flex-direction: column;
-            flex: 2;
+            flex: 1;
             align-items: center;
             justify-content: center;
             overflow: auto;
+            height: calc(100vh - 394px);
+            background-color: #f5f5f5;
+            border-radius: 4px;
+
             .content {
                 display: flex;
                 flex-direction: column;
@@ -152,6 +171,7 @@ aside .box {
             }
         }
     }
+
     .box-content input {
         border: 1px solid $primary-color;
         outline: none;
@@ -163,13 +183,14 @@ aside .box {
         text-align: center;
         width: 100%;
     }
+
     .mat-checkbox-inner-container {
         border: 1px solid $primary-color;
         border-radius: 4px;
     }
+
     .generate-cnpj {
         display: flex;
-        flex: 1;
         align-items: center;
         justify-content: center;
     }
@@ -187,9 +208,11 @@ aside .box {
     justify-content: center;
     padding: 4px;
     position: relative;
+
     mat-checkbox {
         width: 200px;
     }
+
     .copy-icon {
         position: absolute;
         top: 2px;
@@ -200,33 +223,45 @@ aside .box {
 
 .content-action {
     padding: 4px;
+
     button {
+        color: $color !important;
+    }
+    button.generate-cnpj {
         background-color: $primary-color;
-        color: $color;
         margin-left: 4px;
         width: 200px;
     }
 }
 
 footer {
-    height: 96px;
+    height: 66px;
     display: flex;
     flex-direction: column;
     flex: 1;
     align-items: center;
     justify-content: center;
+    background-color: $primary-color;
+    color: $color;
+
     p {
-        color: $primary-color;
-        font-size: 12px;
+        font-size: 8px;
         font-weight: 400;
         letter-spacing: 1px;
+        padding: 2px;
     }
+
     .link-footer {
         border: none;
         cursor: pointer;
         text-decoration: none;
-        color: $primary-color;
+        color: inherit;
     }
+}
+
+aside .box-content.how-to-use {
+    font-size: 12px;
+    text-align: justify;
 }
 
 .mat-input-element:disabled,
@@ -238,23 +273,45 @@ footer {
     border-top-color: $primary-color;
 }
 
-@media only screen and (max-width: 768px) {
-    header {
-        position: relative;
-    }
-    .box {
-        flex-direction: column-reverse;
-        width: auto !important;
-        height: 100% !important;
-    }
-    .box-content:nth-last-child(1) {
-        display: none !important;
-    }
-    aside .box .box-content .content-filiais .content {
-        max-height: 206px;
-    }
+
+@media only screen and (max-width: 824px) {
+
     .container aside {
-        align-items: inherit;
-        justify-content: inherit;
+        flex-direction: column;
     }
+}
+
+@media (max-width: 420px) {
+    .content-options {
+        padding: 2px;
+        font-size: 14px;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.t-center {
+    text-align: center;
+}
+
+.pd-8 {
+    padding: 8px;
+}
+
+.pd-16 {
+    padding: 16px;
 }

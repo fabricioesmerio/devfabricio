@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarModule } from './pages/navbar/navbar.module';
 import { FooterModule } from './pages/footer/footer.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     declarations: [
@@ -16,8 +17,8 @@ import { FooterModule } from './pages/footer/footer.module';
         AppRoutingModule,
         NavbarModule,
         FooterModule,
-        // MatTabsModule
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        ToastrModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent],
