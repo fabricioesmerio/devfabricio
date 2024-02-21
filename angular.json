@@ -74,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "gerador-cnpj:build:production"
+              "buildTarget": "gerador-cnpj:build:production"
             },
             "development": {
-              "browserTarget": "gerador-cnpj:build:development"
+              "buildTarget": "gerador-cnpj:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +85,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gerador-cnpj:build"
+            "buildTarget": "gerador-cnpj:build"
           }
         },
         "test": {
