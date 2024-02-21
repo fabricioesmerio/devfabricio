@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 const routes: Routes = [
     {
@@ -17,9 +17,9 @@ const routes: Routes = [
     }
 ];
 
-const maskConfig: Partial<IConfig> = {
-    validation: false,
-};
+// const maskConfig: Partial<IConfig> = {
+//     validation: false,
+// };
 
 @NgModule({
     imports: [
@@ -30,8 +30,10 @@ const maskConfig: Partial<IConfig> = {
         MatDividerModule,
         MatCheckboxModule,
         MatButtonModule,
-        NgxMaskModule.forRoot(maskConfig)
+        NgxMaskDirective,
+        NgxMaskPipe
     ],
-    declarations: [HomeComponent]
+    declarations: [HomeComponent],
+    providers: [provideNgxMask()]
 })
 export class HomeModule { }
