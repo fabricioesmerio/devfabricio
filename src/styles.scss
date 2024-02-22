@@ -120,9 +120,6 @@ aside .box {
     flex: 1;
     width: 100%;
 
-    // border: 1px solid rgba(27, 40, 43, 0.35);
-    // border-radius: 4px;
-    // box-shadow: 2px 4px 8px rgb(0 0 0 / 12%);
     .box-content {
         flex: 1;
         text-align: center;
@@ -194,6 +191,9 @@ aside .box {
     position: relative;
     gap: 12px;
     height: 46px;
+    min-width: 270px;
+    width: 100%;
+    max-width: 320px;
 }
 
 .content-action {

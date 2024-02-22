@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router';
-
 import { FormsModule } from '@angular/forms';
+
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 const routes: Routes = [
@@ -19,11 +19,11 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
+        CommonModule,        
         RouterModule.forChild(routes),
         NgxMaskDirective,
-        NgxMaskPipe
+        NgxMaskPipe,
+        FormsModule
     ],
     declarations: [HomeComponent],
     providers: [provideNgxMask()]
