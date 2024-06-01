@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GeraCnpjService } from '../services/gera-cnpj.service';
 import { AlertService } from 'src/app/shared/alert.service';
 import { ValidadorCnpjService } from 'src/app/shared/validador-cnpj.service';
@@ -9,7 +9,7 @@ import { ValidadorCnpjService } from 'src/app/shared/validador-cnpj.service';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
     gerarFiliais: boolean = false;
     cnpjMatriz: string = '';
@@ -21,9 +21,6 @@ export class HomeComponent implements OnInit {
         private alertService: AlertService,
         private validatorCnpj: ValidadorCnpjService
     ) { }
-
-    ngOnInit() {
-    }
 
     clearAndGenerateCNPJ() {
         this.cnpjMatriz = '';
@@ -53,8 +50,11 @@ export class HomeComponent implements OnInit {
         this.filiaisList = result.filiais || [];
     }
 
-    copy(item: any) {
-        navigator.clipboard.writeText(item);
+    copy(cnpj: any) {
+        if (!cnpj) return;
+
+        navigator.clipboard.writeText(cnpj);
+        this.alertService.resolve('success', `O CNPJ ${cnpj} foi copiado com sucesso.`)
     }
 
 }
