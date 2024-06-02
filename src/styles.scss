@@ -1,13 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,200;0,300;0,500;0,600;0,700;1,400;1,600&family=Kanit:ital,wght@0,100;0,200;0,400;0,500;0,600;0,800;1,100;1,200;1,400;1,500;1,600;1,800&display=swap");
 @import 'ngx-toastr/toastr';
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
 
 
-// $primary-color: linear-gradient(
-//   0deg,
-//   rgba(9, 34, 148, 1) 0%,
-//   rgba(49, 49, 182, 1) 23%,
-//   rgba(78, 77, 193, 1) 100%
-// );
 $primary-color: #1b282b;
 $color: #e0ce0b;
 $secondary-color: #faf9f6;
@@ -63,6 +59,13 @@ app-root {
     flex: 1;
 }
 
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 header {
     background: $primary-color;
     position: fixed;
@@ -73,6 +76,7 @@ header {
     display: flex;
     align-items: center;
     z-index: 100;
+    color: white;
     
     .nav-link {
         color: $background-color;
@@ -94,16 +98,21 @@ header nav {
     }
 }
 
-.container {
-    margin-top: 64px;
+.navbar-nav .nav-link.active-link {
+    color: $color !important;
+}
+
+.content {
+    margin: 64px 0;
     padding: 16px;
+    flex: 1;
 }
 
 app-home {
     flex: 1;
 }
 
-.container aside {
+.content aside {
     display: flex;
     flex: 1;
     height: 100%;
@@ -158,6 +167,7 @@ aside .box {
                 overflow: auto;
                 width: 100%;
                 align-items: center;
+                margin: 0;
             }
         }
     }
@@ -218,6 +228,10 @@ footer {
     justify-content: center;
     background-color: $primary-color;
     color: $color;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
 
     p {
         font-size: 8px;
@@ -245,7 +259,7 @@ aside .box-content.how-to-use {
 
 @media only screen and (max-width: 824px) {
 
-    .container aside {
+    .content aside {
         flex-direction: column;
     }
 }
@@ -254,6 +268,21 @@ aside .box-content.how-to-use {
     .content-options {
         padding: 2px;
         font-size: 14px;
+    }
+}
+
+@media (max-width: 992px) {
+    header {
+        position: relative;
+        height: auto;
+    }
+
+    .content {
+        margin-top: 0px;
+    }
+
+    .navbar-toggler {
+        background-color: white;
     }
 }
 
@@ -284,3 +313,4 @@ aside .box-content.how-to-use {
 .pd-16 {
     padding: 16px;
 }
+
