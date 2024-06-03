@@ -53,12 +53,13 @@
 
                     <div class="content-filiais">
                         <div class="content">
-                            <div *ngFor="let item of filiaisList; let i = index" class="content-options">
+                            @for (item of filiaisList; track item; ; let i = $index) {
+                            <div class="content-options">
                                 <div class="input-group">
                                     <input type="text" readonly class="form-control" [(ngModel)]="filiaisList[i]"
                                         [name]="'cnpjFilial' + i" aria-label="CNPJ Filial" mask="CPF_CNPJ">
                                     <button class="btn btn-outline-secondary" aria-label="Copiar"
-                                        (click)="copy(filiaisList[i])" type="button">
+                                        (click)="copy(item)" type="button">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd"
@@ -67,6 +68,7 @@
                                     </button>
                                 </div>
                             </div>
+                            }
                         </div>
                     </div>
                 </div>

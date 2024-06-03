@@ -13,9 +13,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @for (m of menu; track $index) {
                     <li class="nav-item">
-                        <a class="nav-link active-link" aria-current="page" routerLink="/">Gerador de CNPJs</a>
+                        <a class="nav-link" aria-current="page" [routerLink]="m.routerLink" routerLinkActive="active-link">
+                            {{ m.label }}
+                        </a>
                     </li>
+                    }
                 </ul>
             </div>
         </div>
