@@ -13,10 +13,6 @@ const routes: Routes = [
     }
 ];
 
-// const maskConfig: Partial<IConfig> = {
-//     validation: false,
-// };
-
 @NgModule({
     imports: [
         CommonModule,        
