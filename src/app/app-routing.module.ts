@@ -14,6 +14,10 @@ const routes: Routes = [
     {
         path: 'password-generator',
         loadComponent: () => import('./pages/password-generator/password-generator.component').then(m => m.PasswordGeneratorComponent)
+    },
+    {
+        path: 'cpf-generator',
+        loadComponent: () => import('./pages/cpf-generator/cpf-generator.component').then(m => m.CpfGeneratorComponent)
     }
 ];
 
