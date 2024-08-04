@@ -11,6 +11,10 @@ export const MENU_DATA: MenuType = [
         routerLink: 'cnpj-generator'
     },
     {
+        label: 'Gerador de CPF',
+        routerLink: 'cpf-generator'
+    },
+    {
         label: 'Gerador de senhas',
         routerLink: 'password-generator'
     }
